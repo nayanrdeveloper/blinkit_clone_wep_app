@@ -23,7 +23,7 @@ interface Feature {
   products: Product[];
 }
 
-const useFetchCategories = () => {
+const useFetchFeatures = () => {
   const [features, setFeatures] = useState<Feature[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
@@ -53,4 +53,4 @@ const useFetchCategories = () => {
   return { features, loading, error };
 };
 
-export default useFetchCategories;
+export default useFetchFeatures;
