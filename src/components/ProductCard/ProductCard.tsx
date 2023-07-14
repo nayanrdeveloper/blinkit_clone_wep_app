@@ -1,3 +1,4 @@
+import { useCart } from "@/contexts/CartContext";
 import { ProductType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +8,13 @@ interface ProductCardProps {
   product: ProductType;
 }
 
+
+
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart } = useCart();
+  const handleAddToCart = (product: ProductType) => {
+    addToCart(product, 1);
+  };
   return (
     <div
       key={product._id}
@@ -37,7 +44,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <p className="text-[#828282] line-through text-sm">₹ 700</p>
         </div>
         <div>
-          <button className="bg-white border border-[#308616] text-[#308616] px-3 py-1 rounded-md">
+          <button
+            onClick={() => handleAddToCart(product)}
+            className="bg-white border border-[#308616] text-[#308616] px-3 py-1 rounded-md"
+          >
             Add
           </button>
         </div>
