@@ -16,27 +16,20 @@ interface Product {
   weight: string;
 }
 
-interface Feature {
-  _id: string;
-  title: string;
-  sponsored: boolean;
-  products: Product[];
-}
-
-const useFetchFeatures = () => {
-  const [features, setFeatures] = useState<Feature[]>([]);
+const useFetchProducts = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    fetchFeatures();
+    fetchProducts();
   }, []);
 
-  const fetchFeatures = async () => {
+  const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://blinkit.onrender.com/features`);
-      setFeatures(response.data);
+      const response = await axios.get(`https://blinkit.onrender.com/products`);
+      setProducts(response.data);
     } catch (error: Error | unknown) {
       if (error instanceof Error) {
         setError(error.message);
@@ -48,11 +41,11 @@ const useFetchFeatures = () => {
     }
   };
 
-  const fetchFeatureById = async (id: string) => {
+  const fetchProductById = async (id: string) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://blinkit.onrender.com/features/${id}`
+        `https://blinkit.onrender.com/products/${id}`
       );
       return response.data;
     } catch (error: Error | unknown) {
@@ -66,7 +59,7 @@ const useFetchFeatures = () => {
     }
   };
 
-  return { features, loading, error, fetchFeatureById };
+  return { products, loading, error, fetchProductById };
 };
 
-export default useFetchFeatures;
+export default useFetchProducts;
