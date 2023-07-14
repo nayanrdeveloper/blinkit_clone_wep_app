@@ -1,5 +1,6 @@
 import useFetchCategories from "@/hooks/useFetchCategories";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Category = () => {
@@ -18,14 +19,16 @@ const Category = () => {
       <div className="flex space-x-5 flex-wrap">
         {categories.map((category) => (
           <div key={category._id}>
-            <div className="relative w-48 h-48">
-              <Image
-                src={category.image}
-                alt={category.name}
-                fill
-                className=""
-              />
-            </div>
+            <Link href={`/category/${category._id}`}>
+              <div className="relative w-48 h-48">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className=""
+                />
+              </div>
+            </Link>
           </div>
         ))}
       </div>

@@ -18,3 +18,10 @@ export type ProductType = {
   manufactureDetails: string;
   weight: string;
 };
+
+export type SubCategoryType = {
+  _id: string;
+  category: string;
+  name: string;
+  image: string;
+};

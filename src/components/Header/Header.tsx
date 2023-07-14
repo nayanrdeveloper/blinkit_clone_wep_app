@@ -13,9 +13,11 @@ export const Header = () => {
     <nav className="flex items-center justify-between px-2 py-2 border-b border-[#eeeeee]">
       {/* Logo and Address */}
       <div className="flex items-center space-x-2">
-        <div className="w-32 h-20 relative border-r border-[#eeeeee]">
-          <Image src={"/logo.png"} alt={"Logo"} fill />
-        </div>
+        <Link href={"/"}>
+          <div className="w-32 h-20 relative border-r border-[#eeeeee]">
+            <Image src={"/logo.png"} alt={"Logo"} fill />
+          </div>
+        </Link>
         <div>
           <p className="text-xl font-semibold">Delivery in 18 minutes</p>
           <p>xp55+ M8p, Spice Garden Layout...</p>

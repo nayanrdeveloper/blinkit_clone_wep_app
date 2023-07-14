@@ -59,7 +59,31 @@ const useFetchProducts = () => {
     }
   };
 
-  return { products, loading, error, fetchProductById };
+  const fetchProductBySubCategory = async (categoryId: string) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://blinkit.onrender.com/products/category/${categoryId}`
+      );
+      return response.data;
+    } catch (error: Error | unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError(String(error));
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    products,
+    loading,
+    error,
+    fetchProductById,
+    fetchProductBySubCategory,
+  };
 };
 
 export default useFetchProducts;
